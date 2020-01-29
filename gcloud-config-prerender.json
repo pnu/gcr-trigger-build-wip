@@ -1,0 +1,26 @@
+{
+  "steps": [
+    {
+      "name": "${_BUILD_IMAGE_NAME}",
+      "entrypoint": "cp",
+      "args": ["-rT", "/build", "/workspace"]
+    },
+    {
+      "name": "${_BUILD_IMAGE_NAME}",
+      "entrypoint": "yarn",
+      "args": ["--cwd", "frontend", "prerender"]
+    },
+    {
+      "name": "${_BUILD_IMAGE_NAME}",
+      "entrypoint": "yarn",
+      "args": [
+        "firebase",
+        "--project",
+        "${_FIREBASE_HOSTING_PROJECT}",
+        "deploy",
+        "--only",
+        "hosting:${_FIREBASE_HOSTING_TARGET}"
+      ]
+    }
+  ]
+}

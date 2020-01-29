@@ -1,0 +1,9 @@
+.gcloudignore
+.gitignore
+#!include:.gitignore
+!/dist
+/src
+/tsconfig.json
+/gcloud-*.sh
+/gcloud-*.json
+/README.md
